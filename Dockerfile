@@ -11,7 +11,8 @@ ARG OVERLAY_ARCH="armhf"
 # environment variables
 ENV PS1="$(whoami)@$(hostname):$(pwd)$" \
 HOME="/root" \
-TERM="xterm"
+TERM="xterm" \
+VERSION="3.6.2"
 
 # install packages
 RUN \

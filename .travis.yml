@@ -13,9 +13,8 @@ script:
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-    TAG=$(grep download Dockerfile | sed 's,.*/download/,,' | sed 's,/.*$,,')
-    docker tag offtechnologies/docker-arm32v6-base-image-alpine:build offtechnologies/docker-arm32v6-base-image-alpine:$TAG
+    TAG=$(grep "ENV VERSION" Dockerfile | awk 'NF>1{print $NF}')
+    docker tag offtechnologies/docker-arm32v6-base-image-alpine offtechnologies/docker-arm32v6-base-image-alpine:$TAG
     docker push offtechnologies/docker-arm32v6-base-image-alpine:$TAG
-    docker tag offtechnologies/docker-arm32v6-base-image-alpine:build offtechnologies/docker-arm32v6-base-image-alpine:latest
     docker push offtechnologies/docker-arm32v6-base-image-alpine:latest
   fi
