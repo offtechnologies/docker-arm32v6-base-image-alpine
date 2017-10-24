@@ -1,0 +1,10 @@
+pipeline:
+
+  docker:
+    image: plugins/docker
+    repo: docker.io/offtechnologies/docker-arm32v6-base-image-alpine
+    registry: docker.io
+    tags:
+      - latest
+      - 3.6.2
+    secrets: [ docker_username, docker_password ]

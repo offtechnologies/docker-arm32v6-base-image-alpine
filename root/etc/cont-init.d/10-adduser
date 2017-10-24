@@ -1,0 +1,23 @@
+#!/usr/bin/with-contenv bash
+
+PUID=${PUID:-912}
+PGID=${PGID:-912}
+
+groupmod -o -g "$PGID" offtech
+usermod -o -u "$PUID" offtech
+
+echo "
+-------------------------------------
+
+Brought to you by offtechnologies
+
+-------------------------------------
+GID/UID
+-------------------------------------
+User uid:    $(id -u offtech)
+User gid:    $(id -g offtech)
+-------------------------------------
+"
+chown offtech:offtech /app
+chown offtech:offtech /config
+chown offtech:offtech /defaults
